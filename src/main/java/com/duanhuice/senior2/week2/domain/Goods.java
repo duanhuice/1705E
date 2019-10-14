@@ -31,7 +31,7 @@ public class Goods  implements Serializable{
   
 	private  Integer  id;//商品编号
 	private  String  name;//商品名称
-	private   BigDecimal  monkey;//商品价格
+	private   String  monkey;//商品价格
 	private   String  bf;//商品百分比
 	/**
 	 * @return the id
@@ -60,13 +60,13 @@ public class Goods  implements Serializable{
 	/**
 	 * @return the monkey
 	 */
-	public BigDecimal getMonkey() {
+	public String getMonkey() {
 		return monkey;
 	}
 	/**
 	 * @param monkey the monkey to set
 	 */
-	public void setMonkey(BigDecimal monkey) {
+	public void setMonkey(String monkey) {
 		this.monkey = monkey;
 	}
 	/**
@@ -86,10 +86,10 @@ public class Goods  implements Serializable{
 	 * @Description:TODO 
 	 * @param id
 	 * @param name
-	 * @param monkey
+	 * @param split
 	 * @param bf 
 	 */
-	public Goods(Integer id, String name, BigDecimal monkey, String bf) {
+	public Goods(Integer id, String name, String monkey, String bf) {
 		super();
 		this.id = id;
 		this.name = name;
