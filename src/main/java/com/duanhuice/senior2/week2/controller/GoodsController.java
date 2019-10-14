@@ -11,8 +11,14 @@
  */
 package com.duanhuice.senior2.week2.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /** 
  * @ClassName: GoodsController 
@@ -22,16 +28,45 @@ import org.springframework.ui.Model;
  */
 @Controller
 public class GoodsController {
-  
+	@Autowired
+	 RedisTemplate  redisTemplate; 
 	
-   public  String  getList( Model m, Integer pageSize ,Integer page ) {
-	      
-	   
+	@RequestMapping("findlist")
+   public  String  getList( Model model, @RequestParam(defaultValue = "10") Integer pageSize ,@RequestParam(defaultValue = "1")Integer page ) {
+		List list = redisTemplate.opsForList().range("goods_List", (page-1)*pageSize, (page-1)*pageSize+pageSize-1);
+		model.addAttribute("list", list);
+		if(page!=1) {
+			model.addAttribute("prePage",page-1);
+		}else {
+			model.addAttribute("prePage",1);
+		}
+		
+		model.addAttribute("nextPage",page+1);
+		return "list";
+	}
+	
+	@RequestMapping("findlistset")       
 	     
+	public  String  getListSet( Model model, @RequestParam(defaultValue = "10") Integer pageSize ,@RequestParam(defaultValue = "1")Integer page ) {
+		List list = redisTemplate.opsForList().range("goods_List", (page-1)*pageSize, (page-1)*pageSize+pageSize-1);
+		model.addAttribute("list", list);
+		if(page!=1) {
+			model.addAttribute("prePage",page-1);
+		}else {
+			model.addAttribute("prePage",1);
+		}
+		
+		model.addAttribute("nextPage",page+1);
+		return "listZset";
+	}   
 	   
 	   
-	   return "list";
 	   
 	   
-   }	
+   	
+	
+	
+	
+	
+	
 }

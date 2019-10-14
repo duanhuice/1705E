@@ -32,7 +32,7 @@ public class Goods  implements Serializable{
 	private  Integer  id;//商品编号
 	private  String  name;//商品名称
 	private   BigDecimal  monkey;//商品价格
-	private   Integer  bf;//商品百分比
+	private   String  bf;//商品百分比
 	/**
 	 * @return the id
 	 */
@@ -72,24 +72,36 @@ public class Goods  implements Serializable{
 	/**
 	 * @return the bf
 	 */
-	public Integer getBf() {
+	public String getBf() {
 		return bf;
 	}
 	/**
 	 * @param bf the bf to set
 	 */
-	public void setBf(Integer bf) {
+	public void setBf(String bf) {
 		this.bf = bf;
 	}
-	/* (non Javadoc) 
-	 * @Title: toString
-	 * @Description: TODO
-	 * @return 
-	 * @see java.lang.Object#toString() 
+	/** 
+	 * @Title:Goods
+	 * @Description:TODO 
+	 * @param id
+	 * @param name
+	 * @param monkey
+	 * @param bf 
 	 */
-	@Override
-	public String toString() {
-		return "Goods [id=" + id + ", name=" + name + ", monkey=" + monkey + ", bf=" + bf + "]";
+	public Goods(Integer id, String name, BigDecimal monkey, String bf) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.monkey = monkey;
+		this.bf = bf;
+	}
+	/** 
+	 * @Title:Goods
+	 * @Description:TODO  
+	 */
+	public Goods() {
+		super();
 	}
 	/* (non Javadoc) 
 	 * @Title: hashCode
@@ -145,29 +157,16 @@ public class Goods  implements Serializable{
 			return false;
 		return true;
 	}
-	/** 
-	 * @Title:Goods
-	 * @Description:TODO 
-	 * @param id
-	 * @param name
-	 * @param monkey
-	 * @param bf 
+	/* (non Javadoc) 
+	 * @Title: toString
+	 * @Description: TODO
+	 * @return 
+	 * @see java.lang.Object#toString() 
 	 */
-	public Goods(Integer id, String name, BigDecimal monkey, Integer bf) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.monkey = monkey;
-		this.bf = bf;
+	@Override
+	public String toString() {
+		return "Goods [id=" + id + ", name=" + name + ", monkey=" + monkey + ", bf=" + bf + "]";
 	}
-	/** 
-	 * @Title:Goods
-	 * @Description:TODO  
-	 */
-	public Goods() {
-		super();
-	}
-	
 	
 	
 	
